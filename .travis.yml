@@ -4,7 +4,8 @@ php:
   - 7.3
 
 addons:
-  chrome: stable
+  chrome: 
+  - 73
 
 install:
   - cp .env.testing .env
