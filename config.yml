@@ -1,20 +1,24 @@
-machine:
-  pre:
-    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+version: 2
+jobs:
+    build:
+        steps:
+            - run: sudo apt-get install -y libsqlite3-dev
+            - run: cp .env.testing .env
+            - run: composer install -n --ignore-platform-reqs
+            - run: npm install
+            - run: npm run production
+            - run: vendor/bin/phpunit
 
-  php:
-    version: 7.1.0
+            - run:
+                name: Start Chrome Driver
+                command: ./vendor/laravel/dusk/bin/chromedriver-linux
+                background: true
 
-dependencies:
-  override:
-    - composer install --no-interaction
-test:
-  pre:
-    - "./vendor/laravel/dusk/bin/chromedriver-linux":
-        background: true
-    - cp .env.testing .env
-    - "php artisan serve":
-        background: true
+            - run:
+                name: Run Laravel Server
+                command: php artisan serve
+                background: true
 
-  override:
-    - php artisan dusk
+            - run:
+                name: Run Laravel Dusk Tests
+                command: php artisan dusk
