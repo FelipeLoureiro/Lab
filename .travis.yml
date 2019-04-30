@@ -9,7 +9,6 @@ addons:
       - chromium-chromedriver
       
 install:
-- sudo apt-get install php-xml
 - sudo apt-get install php-curl
 - sudo apt-get install php-zip
 - composer install
