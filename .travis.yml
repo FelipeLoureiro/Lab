@@ -1,16 +1,12 @@
-sudo: required
-dist: trusty
-language: php
-rvm:
- - 2.2
-before_install:
- - sudo apt-get update
- - sudo apt-get install chromium-chromedriver
-before_script:
-  - "export PATH=$PATH:/usr/lib/chromium-browser/"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+php:
+  - 7.3
 
+addons:
+  apt:
+    packages:
+      - chromium-chromedriver
+
+before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 script:
   - php artisan dusk
