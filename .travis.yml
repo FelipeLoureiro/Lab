@@ -8,5 +8,7 @@ addons:
 
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+  - composer install
+  - composer update
 script:
   - php artisan dusk
