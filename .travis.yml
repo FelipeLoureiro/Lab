@@ -9,13 +9,12 @@ addons:
       - chromium-chromedriver
       
 install:
-- sudo apt-get install php-curl
-- sudo apt-get install php-zip
 - composer install
 - php artisan key:generate
 
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   - composer update
+  - php artisan serve &
 script:
   - php artisan dusk
