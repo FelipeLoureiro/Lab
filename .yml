@@ -1,33 +1,24 @@
-sudo: required
-language: php
+version: 2
+jobs:
+    build:
+        steps:
+            - run: sudo apt-get install -y libsqlite3-dev
+            - run: cp .env.testing .env
+            - run: composer install -n --ignore-platform-reqs
+            - run: npm install
+            - run: npm run production
+            - run: vendor/bin/phpunit
 
-php:
-  - 7.3
+            - run:
+                name: Start Chrome Driver
+                command: ./vendor/laravel/dusk/bin/chromedriver-linux
+                background: true
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+            - run:
+                name: Run Laravel Server
+                command: php artisan serve
+                background: true
 
-install:
-  - cp .env.testing .env
-  - sudo apt-get update
-  - sudo apt-get install google-chrome-stable
-  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-  - php artisan key:generate
-  
-  cache:
-  directories: node_modules
-branches:
-  only: master
-  
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - npm i -g npm@^3
-  - sleep 3
-
-script:
-  - php artisan dusk
+            - run:
+                name: Run Laravel Dusk Tests
+                command: php artisan dusk
