@@ -5,10 +5,16 @@ addons:
   apt:
     packages:
       - chromium-chromedriver
+      
+install:
+- sudo apt-get install php7.2-xml
+- sudo apt-get install php7.2-curl
+- sudo apt-get install php-zip
+- composer install
+- php artisan key:generate
 
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
-  - composer install
   - composer update
 script:
   - php artisan dusk
