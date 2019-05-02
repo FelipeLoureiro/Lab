@@ -9,10 +9,8 @@ addons:
    chrome: stable
 
 install:
-   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-   - travis_retry npm install
-   - npm run prod
-
+- composer update
+  
 before_script:
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan serve &
