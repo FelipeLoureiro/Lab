@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.circleci/config.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.travis.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tests/Browser/ExampleTest.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tests/Browser/LoginTest.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tests/DuskTestCase.php" charset="UTF-8" />
