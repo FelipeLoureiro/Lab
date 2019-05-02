@@ -5,6 +5,7 @@ addons:
   chrome:2.44
 
 install:
+  - composer update
   - cp .env.testing .env
   - sudo apt-get update
   - sudo apt-get install google-chrome-stable
