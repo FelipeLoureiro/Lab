@@ -9,11 +9,11 @@ addons:
    chrome: stable
 
 install:
+- composer update
   
 before_script:
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan serve &
-   - composer update
 
 script:
    - php artisan dusk
