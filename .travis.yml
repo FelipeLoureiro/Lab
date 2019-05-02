@@ -7,7 +7,6 @@ addons:
 install:
   - cp .env.testing .env
   - sudo apt-get install google-chrome-stable
-  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - sudo apt-get update
   - php artisan key:generate
 
