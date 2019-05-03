@@ -13,13 +13,13 @@ jobs:
       - run: composer update
       - run: vendor/bin/phpunit
       - run:
-             name: Start Chrome Driver
-             command: ./vendor/laravel/dusk/bin/chromedriver-linux
-             background: true
+           name: Start Chrome Driver
+           command: ./vendor/laravel/dusk/bin/chromedriver-linux
+           background: true
        - run:
-             name: Run Laravel Server
-             command: php artisan serve
-             background: true
+           name: Run Laravel Server
+           command: php artisan serve
+           background: true
        - run:
-             name: Run Laravel Dusk Tests
-             command: php artisan dusk
+           name: Run Laravel Dusk Tests
+           command: php artisan dusk
