@@ -8,6 +8,4 @@ jobs:
       - run: echo "A first hello"
       - run: sudo apt-get install -y libsqlite3-dev
       - run: cp .env.testing .env
-      - run: npm install
-      - run: npm run production
       - run: vendor/bin/phpunit
