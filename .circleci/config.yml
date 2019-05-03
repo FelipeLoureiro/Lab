@@ -23,7 +23,7 @@ jobs:
       -
         run:
           name: 'Start Chrome Driver'
-          command: /usr/bin/google-chrome
+          command: ./usr/bin/google-chrome
           background: true
       -
         run:
