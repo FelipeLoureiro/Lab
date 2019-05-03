@@ -21,9 +21,11 @@ jobs:
       -
         run: vendor/bin/phpunit
       -
+        run: php artisan dusk:chrome-driver
+      -
         run:
           name: 'Start Chrome Driver'
-          command: ./usr/bin/google-chrome
+          command: ./vendor/laravel/dusk/bin/chromedriver-linux
           background: true
       -
         run:
