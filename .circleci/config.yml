@@ -6,13 +6,5 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-      - run:
-            command: ./vendor/laravel/dusk/bin/chromedriver-linux
-            background: true
-
-            - run: |
-                command: php artisan serve
-                background: true
-
-            - run: |
-                command: php artisan dusk
+      - run:php artisan serve
+      - run:php artisan dusk
