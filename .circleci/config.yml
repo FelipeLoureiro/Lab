@@ -23,7 +23,7 @@ jobs:
       -
         run:
           name: 'Start Chrome Driver'
-          command: bash ./vendor/laravel/dusk/bin/chromedriver-linux
+          command: /usr/bin/google-chrome
           background: true
       -
         run:
