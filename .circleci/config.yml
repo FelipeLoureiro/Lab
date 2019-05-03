@@ -6,5 +6,9 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: php artisan serve
-      - run: php artisan dusk
+      - run: sudo apt-get install -y libsqlite3-dev
+      - run: cp .env.testing .env
+      - run: composer install -n --ignore-platform-reqs
+      - run: npm install
+      - run: npm run production
+      - run: vendor/bin/phpunit
