@@ -2,11 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/php:latest
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sudo apt-get install -y libsqlite3-dev
       - run: cp .env.testing .env
-      - run: composer -v
-      - run: vendor/bin/phpunit
