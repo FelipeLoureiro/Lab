@@ -12,6 +12,5 @@ jobs:
       - run: composer install
       - run: composer update
       - run: vendor/bin/phpunit
-      - run: command: ./vendor/laravel/dusk/bin/chromedriver-linux
       - run: command: php artisan serve
       - run: command: php artisan dusk
