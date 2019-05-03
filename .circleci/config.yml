@@ -10,9 +10,9 @@ jobs:
             command: ./vendor/laravel/dusk/bin/chromedriver-linux
             background: true
 
-            - run:
+            - run: |
                 command: php artisan serve
                 background: true
 
-            - run:
+            - run: |
                 command: php artisan dusk
