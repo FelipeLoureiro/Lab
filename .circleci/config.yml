@@ -27,12 +27,7 @@ jobs:
             -
                 run: 'sudo apt-get update'
             -
-                run: 'sudo apt-get install google-chrome-stable'
-            -
-                run:
-                    name: 'Start Chrome Driver'
-                    command: ./Lab/vendor/laravel/dusk/bin/chromedriver-linux
-                    background: true
+                run: 'sudo apt-get install google-chrome-stable'           
             -
                 run:
                     name: 'Run Laravel Server'
