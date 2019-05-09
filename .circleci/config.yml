@@ -1,45 +1,44 @@
 version: 2
 jobs:
-  build:
-    docker:
-      -
-        image: 'circleci/php:latest'
-    steps:
-      - checkout
-      -
-        run: 'echo "A first hello"'
-      -
-        run: 'sudo apt-get install -y libsqlite3-dev'
-      -
-        run: 'cp .env.testing .env'
-      -
-        run: 'composer -v'
-      -
-        run: 'composer install'
-      -
-        run: 'composer update'
-      -
-        run: vendor/bin/phpunit
-      -
-        run:
-        name: Install Chrome
-        command: |
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-        sudo apt-get update
-        sudo apt-get install google-chrome-stable
-        run: php artisan dusk:chrome-driver
-      -
-        run:
-          name: 'Start Chrome Driver'
-          command: ./Lab/vendor/laravel/dusk/bin/chromedriver-linux
-          background: true
-      -
-        run:
-          name: 'Run Laravel Server'
-          command: 'php artisan serve'
-          background: true
-      -
-        run:
-          name: 'Run Laravel Dusk Tests'
-          command: 'php artisan dusk'
+    build:
+        docker:
+            -
+                image: 'circleci/php:latest'
+        steps:
+            - checkout
+            -
+                run: 'echo "A first hello"'
+            -
+                run: 'sudo apt-get install -y libsqlite3-dev'
+            -
+                run: 'cp .env.testing .env'
+            -
+                run: 'composer -v'
+            -
+                run: 'composer install'
+            -
+                run: 'composer update'
+            -
+                run: vendor/bin/phpunit
+            -
+                run: 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -'
+            -
+                run: 'sudo sh -c ''echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'''
+            -
+                run: 'sudo apt-get update'
+            -
+                run: 'sudo apt-get install google-chrome-stable'
+            -
+                run:
+                    name: 'Start Chrome Driver'
+                    command: ./Lab/vendor/laravel/dusk/bin/chromedriver-linux
+                    background: true
+            -
+                run:
+                    name: 'Run Laravel Server'
+                    command: 'php artisan serve'
+                    background: true
+            -
+                run:
+                    name: 'Run Laravel Dusk Tests'
+                    command: 'php artisan dusk'
